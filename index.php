@@ -3,6 +3,11 @@
 define('__CONFIG__', true);
 require_once "inc/config.php";
 
+
+//debug
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 ?>
 
 
@@ -29,14 +34,14 @@ require_once "inc/config.php";
                         
                     ?>
                 </p>
-                <div class="row justify-content-md-center">
+            </div>
+            <div class="row justify-content-md-center">
                 <a href="login.php">Login</a>
                 <a href="register.php">Register</a>
-                </div>
             </div>
         </div>
 
-        <?php require_once "inc/footer.php" ?>
+        <?php require_once "inc/footer.php"; ?>
         
   </body>
     </body>

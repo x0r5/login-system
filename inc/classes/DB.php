@@ -4,24 +4,25 @@ if(!defined('__CONFIG__')){
     exit("You dont have a config file");
 }
 
+require_once "credentials.php";
 
 class DB{
     protected static $con;
-    require "credentials.php";
+
 
     //constructor function runs everytime new DB() called
     private function __construct(){
         try{
-            self::$con ] new PDO("mysql:host=localhost;dbname=login;port=3306", $username, $password);
+            self::$con = new PDO("mysql:host=localhost;dbname=login;port=3306", Credentials::$username, Credentials::$password);
             self::$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$con->setAttribute(PDO::ATTR_PERSISTENT, false);
         } catch(PDOException $e){
-            echo "Could not connetct to database\r\n";
+            echo "Could not connect to database: ".$e."\r\n";
             exit;
         }
     }
 
-    public statis function getConnection(){
+    public static function getConnection(){
         if(!self::$con){
             new DB();
         }
