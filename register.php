@@ -33,6 +33,9 @@ require_once "inc/config.php";
                     <label for="password1">Password</label>
                     <input type="password" class="form-control" id="password1" placeholder="Password" required="required">
                 </div>
+                    <div class="alert alert-danger" role="alert" style="display: none">
+
+                    </div>
                 <button type="submit" class="btn btn-primary">Regisztráció</button>
                 </form>
             </div>
