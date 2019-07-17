@@ -1,3 +1,5 @@
+
+//----------- IF THE SUBMIT BUTTON IS PRESSED ON THE REGISTER PAGE -----
 $(document).on("submit", "form.register-form", function (event) {
     event.preventDefault();
 
@@ -22,9 +24,9 @@ $(document).on("submit", "form.register-form", function (event) {
     _error.hide();
     console.log(_data);
 
-    alert("form was submitted");
+    //alert("form was submitted");
 
-    ///ajax comes here
+    ///ajax comes here, form is OK
     $.ajax({
         type: 'POST', //hidden from the url
         url: 'ajax/register.php',
@@ -36,6 +38,8 @@ $(document).on("submit", "form.register-form", function (event) {
             console.log(data);
             if(data.redirect != undefined){
                 window.location = data.redirect;
+            }else if(data.error != undefined){
+                _error.text(data.error).show();
             }
         })
         .fail(function ajaxFailed(e){
