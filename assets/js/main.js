@@ -34,6 +34,9 @@ $(document).on("submit", "form.register-form", function (event) {
     })
         .done(function ajaxDone(data){
             console.log(data);
+            if(data.redirect != undefined){
+                window.location = data.redirect;
+            }
         })
         .fail(function ajaxFailed(e){
             console.log(e);
