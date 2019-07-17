@@ -22,11 +22,12 @@ require_once "inc/config.php";
 
         <div class="container-fluid">
             <div class="row justify-content-md-center">
+       <!-- FORM -->
                 <form class="register-form">
                 <h3>Register</h3>
                 <div class="form-group">
                     <label for="email1">Email address</label>
-                    <input type="email" class="form-control" id="emai11" aria-describedby="emailHelp" placeholder="Enter email" required="required">
+                    <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email" required="required">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">

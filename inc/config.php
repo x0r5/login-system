@@ -5,7 +5,7 @@
     }
 
     //
-    include_once "inc/classes/DB.php";
+    include_once "classes/DB.php";
 
     $con = DB::getConnection();
 ?>
