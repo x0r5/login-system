@@ -10,39 +10,41 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     header('Content-Type: application/json');
     $return = [];
 
-    //get data from POST
+    //get data from POST user input
     $email = $_POST['email'];
+    $password = $_POST['password'];
 
 
     //user does not exist
-    $findUser = $con->prepare("SELECT user_id FROM users WHERE email = LOWER(:email) LIMIT 1");
+    $findUser = $con->prepare("SELECT user_id, password FROM users WHERE email = LOWER(:email) LIMIT 1");
     $findUser->bindParam(':email', $email, PDO::PARAM_STR);
     $findUser->execute();
     if($findUser->rowCount() == 1){
-        $return['error'] = "You already have an account";
-        $return['is_logged_in'] = false;
+        //user exists, check password
+        $user = $findUser->fetch(PDO::FETCH_ASSOC); //create array
+
+        if(password_verify($password, $user['password'])){
+            //user is signed in
+            $return['redirect'] = '/dashboard.php';
+            $_SESSION['user_id'] = (int)$user[user_id];
+            $return['is_logged_in'] = true;
+        }
+        else{
+            $return['error'] = "Invalid username or password";
+        }
     }else{
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        //user does not exists -> error message
+        $return['error']= 'You don`t have an account, go to register....';
 
-        $addUser = $con->prepare("INSERT INTO users(email, password) VALUES(:email, :password)");
-        $addUser->bindParam(':email', $email, PDO::PARAM_STR);
-        $addUser->bindParam(':password', $password, PDO::PARAM_STR);
-        $addUser->execute();
 
-        $user_id = $con->lastInsertId();
-        $_SESSION['user_id']= (int)$user_id;
-
-        $return['redirect'] = '/dashboard.php?message=welcome';
-        $return['is_logged_in'] = true;
     }
     //user can be added
 
     //return info to redirect
-    $return['name'] = 'Soma';
     echo json_encode($return, JSON_PRETTY_PRINT);
     exit;
 }else{
-    exit('test');
+    exit('invalid access to the file');
 }
 
 
