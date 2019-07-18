@@ -19,6 +19,9 @@ require_once "inc/config.php";
         <link rel="stylesheet" href="inc/style.css">
     </head>
     <body>
+    <?php
+    include_once "inc/navbar.php";
+    ?>
 
         <div class="container-fluid">
             <div class="row justify-content-md-center">

@@ -1,7 +1,8 @@
-<?php 
+<?php
 // Allow  the config
 define('__CONFIG__', true);
 require_once "inc/config.php";
+
 
 forceDashboard();
 
@@ -23,6 +24,9 @@ forceDashboard();
     </head>
     <body>
 
+    <?php
+    include_once "inc/navbar.php";
+    ?>
         <div class="container-fluid">
             <div class="row justify-content-md-center">
        <!-- FORM -->

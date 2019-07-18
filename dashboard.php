@@ -4,9 +4,6 @@ define('__CONFIG__', true);
 require_once "inc/config.php";
 
 
-
-
-
 forceLogin();
 
 ?>
@@ -25,6 +22,9 @@ forceLogin();
     <link rel="stylesheet" href="inc/style.css">
 </head>
 <body>
+<?php
+    include_once "inc/navbar.php";
+?>
 
 <div class="container-fluid">
     <div class="row justify-content-md-center">
