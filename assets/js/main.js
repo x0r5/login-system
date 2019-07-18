@@ -79,7 +79,7 @@ $(document).on("submit", "form.login-form", function (event) {
     }
 
     else if(_data.password.length < 8){
-        _error.text("Password is too weak. It should be at least 8 characters long.").show();
+        _error.text("Password is incorrect").show();
         return false;
     }
 
@@ -96,7 +96,7 @@ $(document).on("submit", "form.login-form", function (event) {
         async: true
     })
         .done(function ajaxDone(data){
-            console.log('ajax done');
+            //console.log('ajax done');
             console.log(data);
             if(data.redirect != undefined){
                 window.location = data.redirect;
@@ -107,11 +107,9 @@ $(document).on("submit", "form.login-form", function (event) {
         .fail(function ajaxFailed(e){
             console.log('ajax fail');
             console.log(e);
-            /*if(data.error != undefined) {
+            if(data.error != undefined) {
                 _error.text(data.error).show();
             }
-
-             */
 
         })
         .always(function ajaxAlwaysDoThis(data){
