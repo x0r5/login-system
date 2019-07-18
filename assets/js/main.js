@@ -6,7 +6,7 @@ $(document).on("submit", "form.register-form", function (event) {
     var _form = $(this);
     var _error = $(".alert", _form);
 
-    var _data = {
+    var _data = {  //user input
         email: $("input[type='email']", _form).val(),
         password: $("input[type='password']", _form).val()
     }
@@ -52,6 +52,13 @@ $(document).on("submit", "form.register-form", function (event) {
     return false;
 });
 
+/*
+*
+*
+*
+*
+ */
+
 
 //----------- IF THE SUBMIT BUTTON IS PRESSED ON THE LOGIN PAGE -----
 $(document).on("submit", "form.login-form", function (event) {
@@ -84,11 +91,12 @@ $(document).on("submit", "form.login-form", function (event) {
     $.ajax({
         type: 'POST', //hidden from the url
         url: 'ajax/login.php',
-        data: _data,
+        data: _data,  //sent to the server
         dataType: 'json',
         async: true
     })
         .done(function ajaxDone(data){
+            console.log('ajax done');
             console.log(data);
             if(data.redirect != undefined){
                 window.location = data.redirect;
@@ -97,10 +105,13 @@ $(document).on("submit", "form.login-form", function (event) {
             }
         })
         .fail(function ajaxFailed(e){
+            console.log('ajax fail');
             console.log(e);
-            if(data.error != undefined) {
+            /*if(data.error != undefined) {
                 _error.text(data.error).show();
             }
+
+             */
 
         })
         .always(function ajaxAlwaysDoThis(data){

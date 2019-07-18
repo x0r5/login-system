@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $return['error'] = "You already have an account";
         $return['is_logged_in'] = false;
     }else{
+        //get password from user POST
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $addUser = $con->prepare("INSERT INTO users(email, password) VALUES(:email, :password)");

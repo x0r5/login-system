@@ -23,10 +23,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //user exists, check password
         $user = $findUser->fetch(PDO::FETCH_ASSOC); //create array
 
+        //DEBUG
+        //echo "<script>console.log( 'Debug Objects: " . $user['user_id'] . "' );</script>";
+
         if(password_verify($password, $user['password'])){
             //user is signed in
             $return['redirect'] = '/dashboard.php';
-            $_SESSION['user_id'] = (int)$user[user_id];
+            $user_id = (int)$user['user_id'];
+            $_SESSION['user_id'] = $user_id;
             $return['is_logged_in'] = true;
         }
         else{
@@ -46,8 +50,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }else{
     exit('invalid access to the file');
 }
-
-
-
 
 ?>
