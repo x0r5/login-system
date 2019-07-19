@@ -16,25 +16,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
     //user does not exist
-    $findUser = $con->prepare("SELECT user_id, password FROM users WHERE email = LOWER(:email) LIMIT 1");
-    $findUser->bindParam(':email', $email, PDO::PARAM_STR);
-    $findUser->execute();
-    if($findUser->rowCount() == 1){
+    if(User::find($email)){
         //user exists, check password
-        $user = $findUser->fetch(PDO::FETCH_ASSOC); //create array
 
         //DEBUG
         //echo "<script>console.log( 'Debug Objects: " . $user['user_id'] . "' );</script>";
 
-        if(password_verify($password, $user['password'])){
+        $user = User::checkPassword($email, $password);
+        if($user != null){
             //user is signed in
             $return['redirect'] = '/dashboard.php';
-            $user_id = (int)$user['user_id'];
-            $_SESSION['user_id'] = $user_id;
-            $return['is_logged_in'] = true;
+            $_SESSION['user_id'] = $user->user_id;
+            $return['is_logged_in'] = true;  //kell ez meg?
         }
         else{
             $return['error'] = "Invalid username or password";
+            $return['is_logged_in']= false;
         }
     }else{
         //user does not exists -> error message

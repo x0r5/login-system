@@ -13,9 +13,9 @@ class User
     public $email;
     public $reg_time;
 
-    public function __construct($user_id) {
+    public function __construct(int $user_id) {
         $this->con = DB::getConnection();
-        $user_id = Filter::Int( $user_id );
+        //find the user based on user_id
         $user = $this->con->prepare("SELECT user_id, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
         $user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $user->execute();
@@ -24,11 +24,41 @@ class User
             $this->email 		= (string) $user->email;
             $this->user_id 		= (int) $user->user_id;
             $this->reg_time 	= (string) $user->reg_time;
+            $this->name         = (string) $user->name;
         } else {
             // No user.
             // Redirect to to logout.
             header("Location: /logout.php"); exit;
         }
+    }
+
+    public static function checkPassword($email, $password){
+        $user = User::find($email, true);
+        if(password_verify($password, $user['password'])){
+            //password is ok, create new user object
+            $instance = new self($user['user_id']);
+            return $instance;
+        }
+        else{
+            return null;
+        }
+    }
+
+    //search user by email
+    //@param $retrun_assoc: true if user data is also wanted
+    public static function find($email, $return_assoc = false){
+        $email = (string) Filter::String($email);
+
+        $findUser = $con->prepare("SELECT * FROM  users WHERE email = LOWER(:email) LIMIT 1");
+        $findUser->bindParam(':email', $email, PDO::PARAM_STR);
+        $findUser->execute();
+
+        if($return_assoc){
+            return $findUser->fetch(PDO::FETCH_ASSOC); //creates an array
+        }
+
+        $user_found = (boolean)$findUser->rowCount(); //1 or 0
+        return $user_found;
     }
 
 
