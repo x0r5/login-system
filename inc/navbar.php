@@ -20,11 +20,17 @@ if(!defined('__CONFIG__')){
                 <a class="nav-link" href="/login.php">Login </a>
             </li>
             <li class="nav-item <?php setActiveNav("/logout.php"); ?>">
-                <a class="nav-link <?php setDisabledNav(); ?>" href="/logout.php">Logout </a>
+                <a class="nav-link" href="/logout.php">Logout </a>
             </li>
             <li class="nav-item <?php setActiveNav("/register.php"); ?>">
                 <a class="nav-link" href="/register.php">Register </a>
             </li>
+            <?php
+            if(isLoggedIn()){
+                echo " <li class='nav-item'><a class='nav-link' href='#'>Logged in as ".$_SESSION['user_name'] ."</a></li>";
+
+            }
+            ?>
         </ul>
     </div>
 </nav>

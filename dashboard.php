@@ -36,16 +36,23 @@ $user = new User($_SESSION['user_id']);
     <div class="row justify-content-md-center">
         <p>
             <?php
-            echo "Today is:éááÁ ";
+            echo "Today is: ";
             echo date("Y m d");
 
             ?>
         </p>
     </div>
     <div class="row justify-content-md-center">
-        <h4>You are now logged in:_Üdvözöllekééééááá <?php
+        <h4>You are now logged in: <?php
             echo $user->name;
             ?></h4>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-md-center dashboard">
+    What do you want to do today?
+        <button type="button" class="btn btn-secondary">Edit profile</button>
+
     </div>
 </div>
 
