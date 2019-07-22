@@ -6,6 +6,9 @@ require_once "inc/config.php";
 
 forceLogin();
 
+//get all the data of the user from the DB, create User object
+$user = new User($_SESSION['user_id']);
+
 ?>
 
 
@@ -28,6 +31,9 @@ forceLogin();
 
 <div class="container-fluid">
     <div class="row justify-content-md-center">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="row justify-content-md-center">
         <p>
             <?php
             echo "Today is: ";
@@ -37,7 +43,9 @@ forceLogin();
         </p>
     </div>
     <div class="row justify-content-md-center">
-        <h4>You are now logged in: <?php echo $_SESSION['user_id']; ?></h4>
+        <h4>You are now logged in: <?php
+            echo $user->name;
+            ?></h4>
     </div>
 </div>
 

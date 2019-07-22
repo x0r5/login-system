@@ -28,6 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $return['redirect'] = '/dashboard.php';
             $_SESSION['user_id'] = $user->user_id;
             $return['is_logged_in'] = true;  //kell ez meg?
+            $return['userObj'] = $user; //give back the user object
         }
         else{
             $return['error'] = "Invalid username or password";

@@ -32,6 +32,7 @@ class User
         }
     }
 
+    //password check and CONSTRUCTOR also if pssw is correct
     public static function checkPassword($email, $password){
         $user = User::find($email, true);
         if(password_verify($password, $user['password'])){
