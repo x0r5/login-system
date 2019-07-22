@@ -15,20 +15,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $password = $_POST['password'];
 
 
+
     //user does not exist
     if(User::find($email)){
         //user exists, check password
 
+
+
+        $user = User::checkPassword($email, $password);
         //DEBUG
         //echo "<script>console.log( 'Debug Objects: " . $user['user_id'] . "' );</script>";
 
-        $user = User::checkPassword($email, $password);
         if($user != null){
             //user is signed in
             $return['redirect'] = '/dashboard.php';
             $_SESSION['user_id'] = $user->user_id;
-            $return['is_logged_in'] = true;  //kell ez meg?
-            $return['userObj'] = $user; //give back the user object
         }
         else{
             $return['error'] = "Invalid username or password";

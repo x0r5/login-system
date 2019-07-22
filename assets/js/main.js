@@ -85,7 +85,6 @@ $(document).on("submit", "form.login-form", function (event) {
 
     //password and email check passed, hide the preveius error messages
     _error.hide();
-    console.log(_data); //just for dev purposes...
 
     ///ajax comes here, form is OK
     $.ajax({
@@ -107,9 +106,11 @@ $(document).on("submit", "form.login-form", function (event) {
         .fail(function ajaxFailed(e){
             console.log('ajax fail');
             console.log(e);
-            if(data.error != undefined) {
+            /*if(data.error != undefined) {
                 _error.text(data.error).show();
             }
+
+             */
 
         })
         .always(function ajaxAlwaysDoThis(data){

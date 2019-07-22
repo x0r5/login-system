@@ -18,5 +18,9 @@
     include_once "functions.php";
     include_once "classes/User.php";
 
+
+    //global variables
+
+    //database connection
     $con = DB::getConnection();
 ?>

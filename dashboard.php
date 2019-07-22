@@ -44,7 +44,7 @@ $user = new User($_SESSION['user_id']);
     </div>
     <div class="row justify-content-md-center">
         <h4>You are now logged in: <?php
-            echo $user->name;
+            echo $user->email;
             ?></h4>
     </div>
 </div>

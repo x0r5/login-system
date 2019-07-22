@@ -1,9 +1,9 @@
 <?php
 
-// Allow  the config
-define('__CONFIG__', true);
-require_once "../config.php";
-
+// If there is no constant defined called __CONFIG__, do not load this file
+if(!defined('__CONFIG__')) {
+    exit('You do not have a config file');
+}
 
 class User
 {
@@ -12,8 +12,10 @@ class User
     public $user_id;
     public $email;
     public $reg_time;
+    public $name;
 
-    public function __construct(int $user_id) {
+    public function __construct($user_id) {
+        //set the connection
         $this->con = DB::getConnection();
         //find the user based on user_id
         $user = $this->con->prepare("SELECT user_id, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
@@ -24,7 +26,7 @@ class User
             $this->email 		= (string) $user->email;
             $this->user_id 		= (int) $user->user_id;
             $this->reg_time 	= (string) $user->reg_time;
-            $this->name         = (string) $user->name;
+            //$this->name         = (string) $user->name;
         } else {
             // No user.
             // Redirect to to logout.
@@ -46,10 +48,11 @@ class User
     }
 
     //search user by email
+    //there is no db connection yet, so neet to connect first
     //@param $retrun_assoc: true if user data is also wanted
     public static function find($email, $return_assoc = false){
-        $email = (string) Filter::String($email);
-
+        //$email = (string) Filter::String($email);
+        $con = DB::getConnection();
         $findUser = $con->prepare("SELECT * FROM  users WHERE email = LOWER(:email) LIMIT 1");
         $findUser->bindParam(':email', $email, PDO::PARAM_STR);
         $findUser->execute();
