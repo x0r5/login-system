@@ -36,15 +36,15 @@ $user = new User($_SESSION['user_id']);
     <div class="row justify-content-md-center">
         <p>
             <?php
-            echo "Today is: ";
+            echo "Today is:éááÁ ";
             echo date("Y m d");
 
             ?>
         </p>
     </div>
     <div class="row justify-content-md-center">
-        <h4>You are now logged in: <?php
-            echo $user->email;
+        <h4>You are now logged in:_Üdvözöllekééééááá <?php
+            echo $user->name;
             ?></h4>
     </div>
 </div>

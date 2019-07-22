@@ -18,7 +18,7 @@ class User
         //set the connection
         $this->con = DB::getConnection();
         //find the user based on user_id
-        $user = $this->con->prepare("SELECT user_id, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
+        $user = $this->con->prepare("SELECT user_id, email, reg_time, name FROM users WHERE user_id = :user_id LIMIT 1");
         $user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $user->execute();
         if($user->rowCount() == 1) {
@@ -26,7 +26,7 @@ class User
             $this->email 		= (string) $user->email;
             $this->user_id 		= (int) $user->user_id;
             $this->reg_time 	= (string) $user->reg_time;
-            //$this->name         = (string) $user->name;
+            $this->name         = (string) $user->name;
         } else {
             // No user.
             // Redirect to to logout.

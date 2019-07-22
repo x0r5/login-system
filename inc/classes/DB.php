@@ -16,6 +16,7 @@ class DB{
             self::$con = new PDO("mysql:host=localhost;dbname=login;port=3306", Credentials::$username, Credentials::$password);
             self::$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$con->setAttribute(PDO::ATTR_PERSISTENT, false);
+            self::$con->query("SET NAMES utf8"); // needed for special characters: é á ű
         } catch(PDOException $e){
             echo "Could not connect to database: ".$e."\r\n";
             exit;
