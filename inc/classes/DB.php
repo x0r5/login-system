@@ -5,6 +5,7 @@ if(!defined('__CONFIG__')){
 }
 
 require_once "credentials.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 class DB{
     protected static $con;
@@ -32,5 +33,34 @@ class DB{
     }
 }
 
+class MongoDB
+{
+    protected static $db;
+
+    private function __construct()
+    {
+        try {
+
+            // connect to mongodb
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+
+            echo "Connection to database successfully";
+            // select a database
+            self::$db = $client->test;
+
+            echo "Database test selected";
+        }catch( MongoConnectionException $e){
+            echo "No connection to mongodDB is the mongo process running? ".$e ;
+        }
+    }
+
+    public static function getDatabase(){
+        if(!self::$db){
+            new MongoDB();
+        }
+
+        return self::$db;
+    }
+}
 
 ?>

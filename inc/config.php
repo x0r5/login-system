@@ -3,6 +3,7 @@
     if(!defined('__CONFIG__')){
         exit("You dont have a config file");
     }
+    //require_once "../root.php";
 
     //error reporting
     error_reporting(-1);
