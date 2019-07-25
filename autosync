@@ -1,0 +1,5 @@
+#!/bin/bash
+while inotifywait -r -e modify,create,delete /home/soma/OneDrive/personal/php_course
+do
+rsync -e 'ssh -p 22' -avp /home/soma/OneDrive/personal/php_course/ soma@192.168.217.128:/var/www/html/
+done;

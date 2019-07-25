@@ -6,31 +6,33 @@ if(!defined('__CONFIG__')){
 ?>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/index.php">TEST</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item <?php setActiveNav("/dashboard.php"); ?>">
-                <a class="nav-link <?php setDisabledNav(); ?>" href="/dashboard.php">Home  </a>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Products</a>
             </li>
-            <li class="nav-item <?php setActiveNav("/login.php"); ?>">
-                <a class="nav-link" href="/login.php">Login </a>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact/">Contact</a>
             </li>
-            <li class="nav-item <?php setActiveNav("/logout.php"); ?>">
-                <a class="nav-link" href="/logout.php">Logout </a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Third</a>
             </li>
-            <li class="nav-item <?php setActiveNav("/register.php"); ?>">
-                <a class="nav-link" href="/register.php">Register </a>
+        </ul>
+    </div>
+    <!-- MIDDLE -->
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Lét-Reform</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <!-- RIGHT -->
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
             </li>
-            <?php
-            if(isLoggedIn()){
-                echo " <li class='nav-item'><a class='nav-link' href='#'>Logged in as ".$_SESSION['user_name'] ."</a></li>";
-
-            }
-            ?>
         </ul>
     </div>
 </nav>
