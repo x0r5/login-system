@@ -90,6 +90,9 @@ require_once "inc/config.php";
 
 
 
+
+
+
         <?php require_once "inc/footer.php"; ?>
         
   </body>

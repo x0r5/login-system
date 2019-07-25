@@ -1,12 +1,6 @@
 <?php
-
-// Allow  the config
-define('__CONFIG__', true);
-require_once "inc/config.php";
-
-//require 'vendor/autoload.php';
-
-$db = MongoDB::getDatabase();
-echo $_SERVER['DOCUMENT_ROOT'];
-
+//if there is no config var do not load the page
+if(!defined('__CONFIG__')){
+    exit("You dont have a config file");
+}
 ?>

@@ -31,7 +31,13 @@ if(!defined('__CONFIG__')){
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <?php
+                if(isLoggedIn()):
+                ?>
+                <a class="nav-link" data-toggle="modal" data-target="#modalUser" href="">Hello <?=$__user->name?></a>
+                <?php else: ?>
+                <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm" href="">Login</a>
+                <?php endif; ?>
             </li>
         </ul>
     </div>

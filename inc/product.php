@@ -1,4 +1,12 @@
 
+<?php
+//if there is no config var do not load the page
+if(!defined('__CONFIG__')){
+    exit("You dont have a config file");
+}
+?>
+
+
 <?php for($i=1; $i<=15; $i++): ?>
 <div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
