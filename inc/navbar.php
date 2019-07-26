@@ -33,6 +33,48 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
         <div class="collapse navbar-collapse navbarToggler">
             <ul class="navbar-nav ml-auto">
 
+                <div class="dropdown">
+                    <?php if(isLoggedIn()): ?>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hello <?=$__user->name?>
+                    </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    <?php else: ?>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <form class="login-form px-4 px-lg-2 py-3">
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                    <label class="form-check-label" for="dropdownCheck">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">New around here? Sign up</a>
+                            <a class="dropdown-item" href="#">Forgot password?</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <!--
                 <li class="nav-item">
                     <?php
                     if(isLoggedIn()):
@@ -42,6 +84,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
                         <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm" href="">Login</a>
                     <?php endif; ?>
                 </li>
+                -->
             </ul>
         </div>
 

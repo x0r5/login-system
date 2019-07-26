@@ -124,3 +124,7 @@ $(document).on("submit", "form.login-form", function (event) {
 $(document).on("click", "#logout-btn", function (event) {
     window.location = "logout.php";
 });
+
+$(document).on("click", "#settings-btn", function (event) {
+    window.location = "settings.php";
+});
