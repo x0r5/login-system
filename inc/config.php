@@ -18,8 +18,7 @@
     include_once "classes/DB.php";
     include_once "functions.php";
     include_once "classes/User.php";
-    include_once $_SERVER['DOCUMENT_ROOT']."/login.php";
-    include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
+
 
 
     //global variables

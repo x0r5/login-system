@@ -37,7 +37,8 @@ $(document).on("submit", "form.register-form", function (event) {
         .done(function ajaxDone(data){
             console.log(data);
             if(data.redirect != undefined){
-                window.location = data.redirect;
+                //console.log(data.redirect);
+                location.reload(); //refresh the page -> must for changing the navbar status!!
             }else if(data.error != undefined){
                 _error.text(data.error).show();
             }
@@ -71,7 +72,7 @@ $(document).on("submit", "form.login-form", function (event) {
         email: $("input[type='email']", _form).val(),
         password: $("input[type='password']", _form).val()
     }
-    console.log(_data);
+    //console.log(_data);
 
     if(_data.email.length < 6){
         _error.text("Please enter a valid email address").show();

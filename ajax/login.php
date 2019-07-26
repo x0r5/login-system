@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $return['redirect'] = '/dashboard.php';
             $_SESSION['user_id'] = $user->user_id;
             //$_SESSION['user_name'] = $user->name;
-            //$__user = $user; //set the global variable
+            //echo '<script>console.log("user found");</script>';
         }
         else{
             $return['error'] = "Invalid username or password";

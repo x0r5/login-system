@@ -3,16 +3,19 @@
 if(!defined('__CONFIG__')){
     exit("You dont have a config file");
 }
+
+include_once $_SERVER['DOCUMENT_ROOT']."/login.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
 ?>
 
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item <?php echo setActiveNav('/index.php'); ?>">
                 <a class="nav-link" href="#">Products</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo setActiveNav('/contact.php'); ?>">
                 <a class="nav-link" href="/contact/">Contact</a>
             </li>
             <li class="nav-item">

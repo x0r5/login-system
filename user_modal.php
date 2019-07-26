@@ -15,7 +15,8 @@ if(!defined('__CONFIG__')){
 
             </div>
             <div class="modal-body mx-3 mb-4">
-                <button type="submit" class="btn btn-primary">Primary</button>
+                <a href="/logout.php" class="button btn btn-primary">Logout</a>
+
             </div>
             <div class="modal-footer justify-content-center">
 

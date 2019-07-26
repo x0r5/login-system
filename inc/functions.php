@@ -3,7 +3,7 @@ function forceLogin(){
     if(isset($_SESSION['user_id'])){
         //OK the user is logged in
     }else{
-        header('Location: /login.php'); exit;
+        header('Location: /index.php'); exit;
     }
 }
 
@@ -18,6 +18,9 @@ function forceDashboard(){
 
 function setActiveNav($item){
     if($_SERVER['REQUEST_URI'] == $item){
+        echo "active";
+    }
+    else if($item == "/index.php" and $_SERVER['REQUEST_URI'] == "/"){
         echo "active";
     }
 }
