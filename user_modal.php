@@ -15,6 +15,20 @@ if(!defined('__CONFIG__')){
 
             </div>
             <div class="modal-body mx-3 mb-4">
+                <div class="list-group">
+                    <button type="button" id="logout-btn" class="list-group-item list-group-item-action">
+                        Logout
+                    </button>
+                    <button type="button" id="settings-btn" class="list-group-item list-group-item-action">
+                        Settings
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-secondary">User ID: <?php echo $__user->user_id ?></button>
+                    <button type="button" class="list-group-item list-group-item-secondary"><?php echo $__user->email ?></button>
+                    <button type="button" class="list-group-item list-group-item-secondary">Porta ac consectetur ac</button>
+                </div>
+
+
+
                 <a href="/logout.php" class="button btn btn-primary">Logout</a>
 
             </div>
@@ -24,3 +38,4 @@ if(!defined('__CONFIG__')){
         </div>
     </div>
 </div>
+

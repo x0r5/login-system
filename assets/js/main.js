@@ -120,3 +120,7 @@ $(document).on("submit", "form.login-form", function (event) {
 
     return false;
 });
+
+$(document).on("click", "#logout-btn", function (event) {
+    window.location = "logout.php";
+});

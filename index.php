@@ -31,10 +31,10 @@ require_once "inc/config.php";
 
             <div class="col-lg-3">
 
-                <h1 class="my-4">Shop Name</h1>
+                <h1 class="my-4">Lét-Reform</h1>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Bio</a>
+                    <a href="#" class="list-group-item">Reform</a>
                     <a href="#" class="list-group-item">Category 3</a>
                 </div>
 
