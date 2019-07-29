@@ -4,8 +4,8 @@ if(!defined('__CONFIG__')){
     exit("You dont have a config file");
 }
 
-include_once $_SERVER['DOCUMENT_ROOT']."/login.php";
-include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
+//include_once $_SERVER['DOCUMENT_ROOT']."/login.php";
+//include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,11 +40,10 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
                         Hello <?=$__user->name?>
                     </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="settings.php">Settings</a>
+                            <a class="dropdown-item" href="#">Shopping logs</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                            <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                 <!-- IF USER IS NOT LOGGED IN, DISPLAY LOGIN -->
                     <?php else: ?>

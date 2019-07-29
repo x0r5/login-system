@@ -22,6 +22,7 @@
 
 
     //global variables
+    $__page_title = "biosütemény.hu";
 
     //database connection
     $con = DB::getConnection();

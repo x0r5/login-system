@@ -11,7 +11,7 @@ require_once "inc/config.php";
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Page title</title>
+        <title><?php echo $__page_title; ?></title>
 
         <base href="/" />
          <!-- Bootstrap CSS -->
