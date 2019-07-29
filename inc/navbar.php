@@ -34,6 +34,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
             <ul class="navbar-nav ml-auto">
 
                 <div class="dropdown">
+                <!-- IF USER IS LOGGED IN DISPLAY MENU -->
                     <?php if(isLoggedIn()): ?>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Hello <?=$__user->name?>
@@ -45,6 +46,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
+                <!-- IF USER IS NOT LOGGED IN, DISPLAY LOGIN -->
                     <?php else: ?>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Login
@@ -52,12 +54,12 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
                         <div class="dropdown-menu dropdown-menu-right">
                             <form class="login-form px-4 px-lg-2 py-3">
                                 <div class="form-group">
-                                    <label for="exampleDropdownFormEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                    <label for="email1">Email address</label>
+                                    <input type="email" class="form-control" id="email1" placeholder="email@example.com">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                                    <label for="password1">Password</label>
+                                    <input type="password" class="form-control" id="password1" placeholder="Password">
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="dropdownCheck">
@@ -65,6 +67,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/user_modal.php";
                                         Remember me
                                     </label>
                                 </div>
+                                <div class="alert alert-danger" role="alert" style="display: none"></div>
                                 <button type="submit" class="btn btn-primary">Sign in</button>
                             </form>
                             <div class="dropdown-divider"></div>
