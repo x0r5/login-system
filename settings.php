@@ -3,6 +3,7 @@
 define('__CONFIG__', true);
 require_once "inc/config.php";
 
+forceLogin();
 ?>
 
 
@@ -25,26 +26,25 @@ require_once "inc/config.php";
 
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container w-75 mt-5 settings-form">
 
-        <div class="row">
+        <div class="row justify-content-md-center">
             <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">email</span>
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="email">email</span>
+                </div>
+                <input type="text" value="<?php echo $__user->email ?>" class="form-control">
             </div>
-            <input type="text" class="form-control">
         </div>
-        <div class="row">
+        <div class="row justify-content-md-center">
             <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Név</span>
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="name">Név</span>
+                </div>
+                <input type="text" value="<?php echo $__user->name ?>" class="form-control">
             </div>
-            <input type="text" class="form-control">
         </div>
 
-            
-        </div>
-        <!-- /.row -->
 
     </div>
     <!-- /.container -->

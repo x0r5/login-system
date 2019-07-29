@@ -120,12 +120,11 @@ $(document).on("submit", "form.login-form", function (event) {
 
     return false;
 });
-/* NO FUNCTION 
-$(document).on("click", "#logout-btn", function (event) {
-    window.location = "logout.php";
-});
+$(document).on('keyup', '.settings-form', function() {
+    var _div = $(this);
+    $(".form-control", _div).each(function () {
+        console.log($(this).val());
 
-$(document).on("click", "#settings-btn", function (event) {
-    window.location = "settings.php";
+    });
+
 });
-*/
