@@ -13,6 +13,7 @@ class User
     public $email;
     public $reg_time;
     public $name;
+    public $address;
 
     public function __construct($user_id) {
         //set the connection
@@ -27,6 +28,18 @@ class User
             $this->user_id 		= (int) $user->user_id;
             $this->reg_time 	= (string) $user->reg_time;
             $this->name         = (string) $user->name;
+            //get the address
+            $address = $this->con->prepare("SELECT country, city, zip, house, street FROM addresses WHERE user_id = :userid LIMIT 1");
+            $address->bindParam(':userid', $user_id, PDO::PARAM_INT);
+            $address->execute();
+            if($address->rowCount() == 1){
+                $address = $address->fetch(PDO::FETCH_OBJ);
+                $this->address['country']     = (string)$address->country;
+                $this->address['city']        = (string)$address->city;
+                $this->address['zip']         = (string)$address->zip;
+                $this->address['street']      = (string)$address->street;
+                $this->address['house']       = (string)$address->house;
+            }
         } else {
             // No user.
             // Redirect to to logout.

@@ -41,7 +41,7 @@ if(!defined('__CONFIG__')){
                     </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="settings.php">Settings</a>
-                            <a class="dropdown-item" href="#">Shopping logs</a>
+                            <a class="dropdown-item" href="#">Cart</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>

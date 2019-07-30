@@ -29,20 +29,44 @@ forceLogin();
     <div class="container w-75 mt-5 settings-form">
 
         <div class="row justify-content-md-center">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="name">Név</span>
+            <form class="form-settings">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name-settings">Névs</label>
+                        <input type="text" class="form-control" id="name-settings" value="<?php echo $__user->name; ?> ">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email-settings">Email</label>
+                        <input type="email" class="form-control" id="email-settings" value="<?php echo $__user->email;?>">
+                    </div>
                 </div>
-                <input type="text" value="<?php echo $__user->name ?>" class="form-control">
-            </div>
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text" id="email">email</span>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="street">Utca</label>
+                        <input type="text" class="form-control" id="street" value="<?php echo $__user->address['street'];?>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="house">Ház</label>
+                        <input type="text" class="form-control" id="house" value="<?php echo $__user->address['house'];?>">
+                    </div>
                 </div>
-                <input type="text" value="<?php echo $__user->email ?>" class="form-control">
-            </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="country">Ország</label>
+                        <input type="text" class="form-control" id="country" value="<?php echo $__user->address['country'];?>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="city">Város</label>
+                        <input type="text" class="form-control" id="city" value="<?php echo $__user->address['city'];?>">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="zip">Irányítószám</label>
+                        <input type="text" class="form-control" id="zip" value="<?php echo $__user->address['zip'];?>">
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert" style="display: none"></div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
         </div>
 
 
