@@ -65,6 +65,7 @@ forceLogin();
                     </div>
                 </div>
                 <div class="alert alert-danger" role="alert" style="display: none"></div>
+                <div class="alert alert-primary" role="alert" style="display: none"></div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>

@@ -134,7 +134,8 @@ $(document).on('keyup', '.settings-form', function() {
 $(document).on("submit", "form.form-settings", function(event) {
     event.preventDefault();
     var _form = $(this);
-    var _error = $(".alert", _form);
+    var _error = $(".alert-danger", _form);
+    var _notify = $(".alert-primary", _form);
 
     //get all the data, compare to the stored data
 
@@ -152,6 +153,10 @@ $(document).on("submit", "form.form-settings", function(event) {
         _error.text("Please enter a valid email address").show();
         return false;
     }
+
+    //hide alerts
+    _error.hide();
+    _notify.hide();
 
 
 
@@ -174,7 +179,7 @@ $(document).on("submit", "form.form-settings", function(event) {
                 _error.text(data.error).show();
             }
             else if(data.reply != undefined){
-                _error.text(data.reply).show();
+                _notify.text(data.reply).show();
             }
         })
         .fail(function ajaxFailed(e) {

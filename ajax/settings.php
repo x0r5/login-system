@@ -23,32 +23,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $update->bindParam(':email', $email, PDO::PARAM_STR);
         $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
         $update->execute();
-        $return['reply'] = "email updated";
+        $return['reply'] = " email";
     }
     if($name != $__user->name){
         $update = $con->prepare("UPDATE users SET name = :name WHERE user_id = :userid");
         $update->bindParam(':name', $name, PDO::PARAM_STR);
         $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
         $update->execute();
-        $return['reply'] = "name updated";
+        $return['reply'] .= " name";
     }
-    if($street != $__user->address['street']){
-        $update = $con->prepare("UPDATE addresses SET street = :street WHERE user_id = :userid");
-        $update->bindParam(':street', $street, PDO::PARAM_STR);
-        $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
-        $update->execute();
-        $return['reply'] = "street updated";
+    function updateTable($var, $name){
+        global $__user;
+        global $con;
+        global $return;
+        if($var != $__user->address[$name]){
+            $update = $con->prepare("UPDATE addresses SET :name = :var WHERE user_id = :userid");
+            $update->bindParam(':name', $name, PDO::PARAM_STR);
+            $update->bindParam(':var', $var, PDO::PARAM_STR);
+            $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
+            $update->execute();
+            $return['reply'] .= " ".$name;
+        }
     }
-    if($house != $__user->address['house']){
-        $update = $con->prepare("UPDATE addresses SET house = :house WHERE user_id = :userid");
-        $update->bindParam(':house', $house, PDO::PARAM_STR);
-        $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
-        $update->execute();
-        $return['reply'] = "house updated";
+
+    updateTable($street, "street");
+    updateTable($house, "house");
+    updateTable($country, "country");
+    updateTable($city, "city");
+    updateTable($zip, "zip");
+
+
+
+
+
+
+    if(strlen($return['reply']) == 0){
+        $return['error'] = "error happened";
     }
 
 
-    $return['error'] = "error happened";
     echo json_encode($return, JSON_PRETTY_PRINT);
     exit;
 
