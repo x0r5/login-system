@@ -3,10 +3,7 @@
 define('__CONFIG__', true);
 require_once "inc/config.php";
 
-
 forceDashboard();
-
-
 ?>
 
 
@@ -28,7 +25,7 @@ forceDashboard();
     include_once "inc/navbar.php";
     ?>
         <div class="container-fluid">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-md-center mt-5">
        <!-- FORM -->
                 <form class="register-form">
                 <h3>Register</h3>

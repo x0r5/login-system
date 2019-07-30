@@ -31,19 +31,20 @@ forceLogin();
         <div class="row justify-content-md-center">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                <span class="input-group-text" id="email">email</span>
-                </div>
-                <input type="text" value="<?php echo $__user->email ?>" class="form-control">
-            </div>
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
                     <span class="input-group-text" id="name">Név</span>
                 </div>
                 <input type="text" value="<?php echo $__user->name ?>" class="form-control">
             </div>
         </div>
+        <div class="row justify-content-md-center">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="email">email</span>
+                </div>
+                <input type="text" value="<?php echo $__user->email ?>" class="form-control">
+            </div>
+        </div>
+
 
 
     </div>

@@ -53,12 +53,12 @@ if(!defined('__CONFIG__')){
                         <div class="dropdown-menu dropdown-menu-right">
                             <form class="login-form px-4 px-lg-2 py-3">
                                 <div class="form-group">
-                                    <label for="email1">Email address</label>
-                                    <input type="email" class="form-control" id="email1" placeholder="email@example.com">
+                                    <label for="email-login">Email address</label>
+                                    <input type="email" class="form-control" id="email-login" placeholder="email@example.com">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password1">Password</label>
-                                    <input type="password" class="form-control" id="password1" placeholder="Password">
+                                    <label for="password-login">Password</label>
+                                    <input type="password" class="form-control" id="password-login" placeholder="Password">
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="dropdownCheck">
@@ -70,7 +70,7 @@ if(!defined('__CONFIG__')){
                                 <button type="submit" class="btn btn-primary">Sign in</button>
                             </form>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">New around here? Sign up</a>
+                            <a class="dropdown-item" href="register.php">New around here? Sign up</a>
                             <a class="dropdown-item" href="#">Forgot password?</a>
                         </div>
                     <?php endif; ?>
