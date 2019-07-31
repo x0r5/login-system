@@ -32,7 +32,7 @@ forceLogin();
             <form class="form-settings">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name-settings">Névs</label>
+                        <label for="name-settings">Név</label>
                         <input type="text" class="form-control" id="name-settings" value="<?php echo $__user->name; ?> ">
                     </div>
                     <div class="form-group col-md-6">
@@ -40,6 +40,10 @@ forceLogin();
                         <input type="email" class="form-control" id="email-settings" value="<?php echo $__user->email;?>">
                     </div>
                 </div>
+                <?php
+                //display adresses
+
+                ?>
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         <label for="street">Utca</label>

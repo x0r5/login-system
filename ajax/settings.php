@@ -6,6 +6,7 @@ require_once "../inc/config.php";
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Content-Type: application/json');
     $return = [];
+    $return['reply'] = "";
 
     //get data from POST user input
     $email = $_POST['email'];
@@ -37,8 +38,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         global $con;
         global $return;
         if($var != $__user->address[$name]){
-            $update = $con->prepare("UPDATE addresses SET :name = :var WHERE user_id = :userid");
-            $update->bindParam(':name', $name, PDO::PARAM_STR);
+            $query = "UPDATE addresses SET ".$name." = :var WHERE user_id = :userid";
+            $update = $con->prepare($query);
+            //$update->bindParam(':name', $name, PDO::PAR);
             $update->bindParam(':var', $var, PDO::PARAM_STR);
             $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
             $update->execute();
@@ -59,6 +61,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(strlen($return['reply']) == 0){
         $return['error'] = "error happened";
+    }
+    else{
+        $return['reply'] .= " updated";
     }
 
 

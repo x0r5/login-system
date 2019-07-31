@@ -5,7 +5,7 @@ if(!defined('__CONFIG__')){
 }
 
 require_once "credentials.php";
-require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+//require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 class DB{
     protected static $con;
@@ -31,8 +31,16 @@ class DB{
 
         return self::$con;
     }
-}
 
+
+    public static function query($sql){
+        $con = self::getConnection();
+        $reply = $con->prepare($sql);
+        $reply->execute();
+        return $reply;
+    }
+}
+/*
 class MongoDB
 {
     protected static $db;
@@ -62,5 +70,5 @@ class MongoDB
         return self::$db;
     }
 }
-
+*/
 ?>

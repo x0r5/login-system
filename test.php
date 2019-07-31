@@ -1,6 +1,12 @@
 <?php
-//if there is no config var do not load the page
-if(!defined('__CONFIG__')){
-    exit("You dont have a config file");
-}
-?>
+// Allow  the config
+define('__CONFIG__', true);
+require_once "inc/config.php";
+
+
+$add = new Address(4);
+
+
+
+
+

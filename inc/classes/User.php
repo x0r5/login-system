@@ -13,7 +13,8 @@ class User
     public $email;
     public $reg_time;
     public $name;
-    public $address;
+    public $address; //current address
+    public $addresses; //new feature
 
     public function __construct($user_id) {
         //set the connection
@@ -29,6 +30,13 @@ class User
             $this->reg_time 	= (string) $user->reg_time;
             $this->name         = (string) $user->name;
             //get the address
+            $reply = DB::query("SELECT * FROM `addresses` WHERE user_id = ".$this->user_id);
+            $num = $reply->rowCount();
+            while($row = $reply->fetch(PDO::FETCH_ASSOC)){
+                $this->addresses[$row['name']] = new Address($row['id']);
+            }
+
+
             $address = $this->con->prepare("SELECT country, city, zip, house, street FROM addresses WHERE user_id = :userid LIMIT 1");
             $address->bindParam(':userid', $user_id, PDO::PARAM_INT);
             $address->execute();
