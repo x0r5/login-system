@@ -16,6 +16,7 @@ class User
     public $address; //current address
     public $addresses; //new feature
 
+    //construct based on database data
     public function __construct($user_id) {
         //set the connection
         $this->con = DB::getConnection();
@@ -31,12 +32,13 @@ class User
             $this->name         = (string) $user->name;
             //get the address
             $reply = DB::query("SELECT * FROM `addresses` WHERE user_id = ".$this->user_id);
-            $num = $reply->rowCount();
+            // get addresses from database constuct objects
             while($row = $reply->fetch(PDO::FETCH_ASSOC)){
-                $this->addresses[$row['name']] = new Address($row['id']);
+                //$this->addresses[$row['name']] = new Address($row['id']);
+                $this->addresses[$row['id']] = Address::withId($row['id']);
             }
 
-
+            /*
             $address = $this->con->prepare("SELECT country, city, zip, house, street FROM addresses WHERE user_id = :userid LIMIT 1");
             $address->bindParam(':userid', $user_id, PDO::PARAM_INT);
             $address->execute();
@@ -48,6 +50,7 @@ class User
                 $this->address['street']      = (string)$address->street;
                 $this->address['house']       = (string)$address->house;
             }
+            */
         } else {
             // No user.
             // Redirect to to logout.

@@ -40,37 +40,19 @@ forceLogin();
                         <input type="email" class="form-control" id="email-settings" value="<?php echo $__user->email;?>">
                     </div>
                 </div>
-                <?php
-                //display adresses
+                <?php if(count($__user->addresses)== 0): ?>
+                    <div class="alert alert-warning" role="alert">
+                        There are no addresses. Do you want to add one?
+                    </div>
 
-                ?>
-                <div class="form-row">
-                    <div class="form-group col-md-8">
-                        <label for="street">Utca</label>
-                        <input type="text" class="form-control" id="street" value="<?php echo $__user->address['street'];?>">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="house">Ház</label>
-                        <input type="text" class="form-control" id="house" value="<?php echo $__user->address['house'];?>">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="country">Ország</label>
-                        <input type="text" class="form-control" id="country" value="<?php echo $__user->address['country'];?>">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="city">Város</label>
-                        <input type="text" class="form-control" id="city" value="<?php echo $__user->address['city'];?>">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="zip">Irányítószám</label>
-                        <input type="text" class="form-control" id="zip" value="<?php echo $__user->address['zip'];?>">
-                    </div>
-                </div>
-                <div class="alert alert-danger" role="alert" style="display: none"></div>
-                <div class="alert alert-primary" role="alert" style="display: none"></div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <?php else:
+                    foreach($__user->addresses as $address){
+                        $address->displayForm();
+                    }
+                    ?>
+
+
+                <?php endif; ?>
             </form>
         </div>
 

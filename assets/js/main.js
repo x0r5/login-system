@@ -141,12 +141,13 @@ $(document).on("submit", "form.form-settings", function(event) {
 
     var _data = {  //user input
         email: $("input[type='email']", _form).val().trim(),
-        name: $("input[id='name-settings'", _form).val().trim(),
-        street: $("input[id='street'", _form).val().trim(),
-        house: $("input[id='house'", _form).val().trim(),
-        country: $("input[id='country'", _form).val().trim(),
-        city: $("input[id='city'", _form).val().trim(),
-        zip: $("input[id='zip'", _form).val().trim()
+        name: $("input[id='name-settings']", _form).val().trim(),
+        street: $("input[id='street']", _form).val().trim(),
+        house: $("input[id='house']", _form).val().trim(),
+        country: $("input[id='country']", _form).val().trim(),
+        city: $("input[id='city']", _form).val().trim(),
+        zip: $("input[id='zip']", _form).val().trim(),
+        main: $("input[id='checkbox']", _form).prop('checked')
     };
     //validation
     if(_data.email.length < 6){

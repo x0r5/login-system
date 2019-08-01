@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $country = $_POST['country'];
     $city = $_POST['city'];
     $zip = $_POST['zip'];
+    $main = $_POST['main']?1:0;
 
     //check against stored data
     $con = DB::getConnection();
@@ -33,18 +34,34 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $update->execute();
         $return['reply'] .= " name";
     }
-    function updateTable($var, $name){
-        global $__user;
-        global $con;
-        global $return;
-        if($var != $__user->address[$name]){
-            $query = "UPDATE addresses SET ".$name." = :var WHERE user_id = :userid";
-            $update = $con->prepare($query);
-            //$update->bindParam(':name', $name, PDO::PAR);
-            $update->bindParam(':var', $var, PDO::PARAM_STR);
-            $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
-            $update->execute();
-            $return['reply'] .= " ".$name;
+
+
+    class Update
+    {
+        private $sql;
+        function updateTable($var, $name)
+        {
+            global $__user;
+            global $con;
+            global $return;
+            $this->sql = "UPDATE addresses SET `" . $name . "` = ";
+            if ($var != $__user->address[$name]) {
+                if (is_int($var)) {
+                    $this->sql .= $var;
+                } else {
+                    $this->sql .= "`" . $var . "` ";
+                }
+                $this->sql .= " WHERE id = ". $
+
+
+                $query = "UPDATE addresses SET " . $name . " = :var WHERE user_id = :userid";
+                $update = $con->prepare($query);
+                //$update->bindParam(':name', $name, PDO::PAR);
+                $update->bindParam(':var', $var, PDO::PARAM_STR);
+                $update->bindParam(':userid', $__user->user_id, PDO::PARAM_INT);
+                $update->execute();
+                $return['reply'] .= " " . $name;
+            }
         }
     }
 
